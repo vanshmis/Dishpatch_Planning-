@@ -15,6 +15,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { dispatchService } from '../services/api';
+import logoUrl from '../assets/logo.png';
 
 interface SidebarProps {
   currentPath: string;
@@ -109,12 +110,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, onNavigate }) => 
       {/* Brand Header */}
       <div className="p-4 border-b border-[#2d2516] flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-[#F4B400] text-[#181309] flex items-center justify-center font-black text-lg shadow-sm">
-            <Truck className="w-5 h-5 text-[#181309]" />
+          <div className="w-10 h-10 bg-white rounded-md flex items-center justify-center p-0.5 shadow-sm">
+            <img src={logoUrl} alt="Logo" className="w-full h-full object-contain" />
           </div>
           <div>
-            <h1 className="text-sm font-black tracking-tight text-white uppercase font-sans">
-              DEEPAK DISPATCH
+            <h1 className="text-[13px] font-black tracking-tight text-white uppercase font-sans leading-tight">
+              DISPATCH PLANNING
             </h1>
             <p className="text-[10px] text-[#cca352] font-semibold tracking-wider uppercase">
               LOGISTICS ERP v3.2
@@ -190,7 +191,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, onNavigate }) => 
           <span className="text-[10px] text-slate-500 font-mono">18ms</span>
         </div>
         <div className="text-[10px] text-slate-500">
-          Deepak Logistics &copy; 2026. All rights reserved.
+          Dispatch Planning &copy; 2026. All rights reserved.
         </div>
       </div>
     </aside>

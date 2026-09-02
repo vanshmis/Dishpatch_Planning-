@@ -31,7 +31,7 @@ export const SettingsPage: React.FC = () => {
   const [vType, setVType] = useState('19ft Container (7.5T)');
   const [vCap, setVCap] = useState(7500);
   const [vVol, setVVol] = useState(32);
-  const [vTransporter, setVTransporter] = useState('Deepak Fleet Services');
+  const [vTransporter, setVTransporter] = useState('Dispatch Fleet Services');
 
   const handleAddVehicle = (e: React.FormEvent) => {
     e.preventDefault();

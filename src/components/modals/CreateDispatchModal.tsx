@@ -112,7 +112,7 @@ export const CreateDispatchModal: React.FC<CreateDispatchModalProps> = ({
       driverId: currentDriver?.id,
       driverName: currentDriver?.name || currentVehicle.driverName || 'Designated Driver',
       driverPhone: currentDriver?.phone || currentVehicle.driverPhone || '+91 98000 00000',
-      transporterName: currentVehicle.transporterName || 'Deepak Fleet Services',
+      transporterName: currentVehicle.transporterName || 'Dispatch Fleet Services',
       route: routeStops.length > 0 ? routeStops : ['Thane Central Hub', mappedPIs[0]?.destinationCity || 'Destination'],
       piIds: selectedPiIds,
       totalWeightKg: totalWeight,

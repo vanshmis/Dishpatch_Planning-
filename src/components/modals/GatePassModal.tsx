@@ -8,6 +8,8 @@ interface GatePassModalProps {
   onClose: () => void;
 }
 
+import logoUrl from '../../assets/logo.png';
+
 export const GatePassModal: React.FC<GatePassModalProps> = ({ dispatch, isOpen, onClose }) => {
   if (!isOpen || !dispatch) return null;
 
@@ -55,12 +57,12 @@ export const GatePassModal: React.FC<GatePassModalProps> = ({ dispatch, isOpen, 
           {/* Company Brand Header */}
           <div className="border-b-2 border-slate-900 pb-4 flex items-start justify-between">
             <div>
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 bg-[#181309] text-[#F4B400] rounded-md flex items-center justify-center font-black text-sm">
-                  D
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 bg-white rounded-md flex items-center justify-center border border-slate-200 p-1">
+                  <img src={logoUrl} alt="Logo" className="w-full h-full object-contain" />
                 </div>
-                <h1 className="text-xl font-black tracking-tight text-slate-900">
-                  DEEPAK LOGISTICS & DISPATCH ERP
+                <h1 className="text-xl font-black tracking-tight text-slate-900 uppercase">
+                  DISPATCH PLANNING ERP
                 </h1>
               </div>
               <p className="text-xs text-slate-500 mt-1">

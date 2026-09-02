@@ -21,13 +21,13 @@ import {
 
 // Local storage keys to persist state across user interactions
 const STORAGE_KEYS = {
-  PIS: 'deepak_dispatch_pis',
-  DISPATCHES: 'deepak_dispatch_plans',
-  VEHICLES: 'deepak_dispatch_vehicles',
-  DRIVERS: 'deepak_dispatch_drivers',
-  CLIENTS: 'deepak_dispatch_clients',
-  ROLLBACKS: 'deepak_dispatch_rollbacks',
-  NOTIFICATIONS: 'deepak_dispatch_notifications',
+  PIS: 'Dispatch_Planning_pis',
+  DISPATCHES: 'Dispatch_Planning_plans',
+  VEHICLES: 'Dispatch_Planning_vehicles',
+  DRIVERS: 'Dispatch_Planning_drivers',
+  CLIENTS: 'Dispatch_Planning_clients',
+  ROLLBACKS: 'Dispatch_Planning_rollbacks',
+  NOTIFICATIONS: 'Dispatch_Planning_notifications',
 };
 
 function getStored<T>(key: string, defaultVal: T): T {

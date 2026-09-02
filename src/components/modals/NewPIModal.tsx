@@ -122,7 +122,7 @@ export const NewPIModal: React.FC<NewPIModalProps> = ({ isOpen, onClose, onSucce
             <div>
               <h3 className="text-lg font-bold tracking-tight text-white">Create Proforma Invoice</h3>
               <p className="text-xs text-slate-400">
-                Log a new sales order into Deepak Dispatch ERP pipeline
+                Log a new sales order into DISPATCH PLANNING ERP pipeline
               </p>
             </div>
           </div>
