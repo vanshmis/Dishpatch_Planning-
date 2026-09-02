@@ -1,0 +1,141 @@
+export type PIStatus = 'PENDING' | 'PLANNED' | 'DISPATCHED' | 'DELIVERED' | 'CANCELLED' | 'HOLD';
+export type DispatchStatus = 'DRAFT' | 'READY_FOR_LOADING' | 'LOADING' | 'GATE_PASS_ISSUED' | 'IN_TRANSIT' | 'DELIVERED' | 'CANCELLED';
+export type PriorityLevel = 'URGENT' | 'HIGH' | 'NORMAL' | 'LOW';
+
+export interface PIItem {
+  id: string;
+  itemCode: string;
+  description: string;
+  quantity: number;
+  unit: string;
+  weightKg: number;
+  volumeCbm: number;
+  rate: number;
+  amount: number;
+}
+
+export interface ProformaInvoice {
+  id: string;
+  piNumber: string;
+  orderNumber: string;
+  clientName: string;
+  clientCode: string;
+  destinationCity: string;
+  state: string;
+  deliveryAddress: string;
+  pinCode: string;
+  piDate: string;
+  expectedDeliveryDate: string;
+  items: PIItem[];
+  totalWeightKg: number;
+  totalVolumeCbm: number;
+  totalAmount: number;
+  status: PIStatus;
+  priority: PriorityLevel;
+  assignedDispatchId?: string;
+  remarks?: string;
+  createdDate: string;
+}
+
+export interface Vehicle {
+  id: string;
+  vehicleNumber: string;
+  type: string; // '14ft Eicher' | '19ft Container' | '32ft MXL' | 'Tata Ace' | 'Trailer'
+  capacityWeightKg: number;
+  capacityVolumeCbm: number;
+  ownerType: 'OWN' | 'MARKET' | 'CONTRACT';
+  transporterName?: string;
+  status: 'AVAILABLE' | 'ASSIGNED' | 'MAINTENANCE' | 'IN_TRANSIT';
+  driverName?: string;
+  driverPhone?: string;
+  rcExpiryDate: string;
+  insuranceExpiryDate: string;
+  fitnessExpiryDate: string;
+  currentLocation?: string;
+}
+
+export interface Driver {
+  id: string;
+  name: string;
+  phone: string;
+  licenseNumber: string;
+  licenseExpiry: string;
+  status: 'AVAILABLE' | 'ON_DUTY' | 'OFF_DUTY';
+  experienceYears: number;
+  rating: number;
+}
+
+export interface DispatchPlan {
+  id: string;
+  dispatchNumber: string;
+  planningDate: string;
+  dispatchDate: string;
+  scheduledTimeSlot: string;
+  status: DispatchStatus;
+  vehicleId: string;
+  vehicleNumber: string;
+  vehicleType: string;
+  driverId?: string;
+  driverName: string;
+  driverPhone: string;
+  transporterName?: string;
+  route: string[];
+  piIds: string[];
+  pis?: ProformaInvoice[];
+  totalWeightKg: number;
+  maxWeightCapacityKg: number;
+  totalVolumeCbm: number;
+  maxVolumeCapacityCbm: number;
+  estimatedFreightCost: number;
+  gatePassNumber?: string;
+  gatePassIssuedAt?: string;
+  lrNumber?: string;
+  sealNumber?: string;
+  remarks?: string;
+  startedAt?: string;
+  completedAt?: string;
+  deliveryProofUrl?: string;
+  receivedBy?: string;
+  receivedDate?: string;
+  isRollbackAllowed: boolean;
+}
+
+export interface RollbackAction {
+  id: string;
+  dispatchId: string;
+  dispatchNumber: string;
+  reasonCategory: 'VEHICLE_BREAKDOWN' | 'CLIENT_CANCELLATION' | 'WEIGHT_DISCREPANCY' | 'INCORRECT_MAPPING' | 'DOCUMENTATION_ERROR' | 'OTHER';
+  reasonNotes: string;
+  actionTaken: 'REVERT_TO_PENDING' | 'CANCEL_DISPATCH' | 'REASSIGN_VEHICLE' | 'GATE_PASS_CANCEL';
+  requestedBy: string;
+  requestedAt: string;
+  approvedBy: string;
+  status: 'COMPLETED' | 'REJECTED';
+  affectedPiCount: number;
+}
+
+export interface Client {
+  id: string;
+  name: string;
+  code: string;
+  contactPerson: string;
+  phone: string;
+  email: string;
+  city: string;
+  state: string;
+  deliveryZone: string;
+  activePISummary?: {
+    pendingCount: number;
+    inTransitCount: number;
+  };
+}
+
+export interface NotificationItem {
+  id: string;
+  title: string;
+  message: string;
+  type: 'INFO' | 'SUCCESS' | 'WARNING' | 'ALERT';
+  timestamp: string;
+  read: boolean;
+  actionLink?: string;
+}
